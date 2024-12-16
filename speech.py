@@ -44,6 +44,11 @@ while(1):
 
             print("Did you say",MyText)
             SpeakText(MyText)
+            if "stop" in MyText:
+                print("Stopping the program.")
+                SpeakText("Goodbye!")
+                break  # Exit the loop
+
             
     except sr.RequestError as e:
         print("Could not request results; {0}".format(e))
