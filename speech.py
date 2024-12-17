@@ -3,7 +3,8 @@
 
 
 import speech_recognition as sr
-import pyttsx3 
+import pyttsx3
+import os
 
 # Initialize the recognizer 
 r = sr.Recognizer() 
@@ -11,6 +12,7 @@ r = sr.Recognizer()
 # Function to convert text to
 # speech
 def SpeakText(command):
+    
     
     # Initialize the engine
     engine = pyttsx3.init()
@@ -20,8 +22,9 @@ def SpeakText(command):
     
 # Loop infinitely for user to
 # speak
+webs={"chrome":"chrome","firefox":"firefox","opera browser":"opera browser","microsoft edge":"edge","microsoft word":"word"}
+while(1):
 
-while(1):    
     
     # Exception handling to handle
     # exceptions at the runtime
@@ -44,6 +47,14 @@ while(1):
 
             print("Did you say",MyText)
             SpeakText(MyText)
+            if MyText in webs:
+                os.system(f"start {webs[MyText]}")
+                SpeakText(f"starting {webs[MyText]}")
+            if MyText=="stop":
+                SpeakText("engine stopped")
+                break
+
+
             
     except sr.RequestError as e:
         print("Could not request results; {0}".format(e))
