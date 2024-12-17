@@ -47,14 +47,6 @@ while(1):
 
             print("Did you say",MyText)
             SpeakText(MyText)
-            if MyText in webs:
-                os.system(f"start {webs[MyText]}")
-                SpeakText(f"starting {webs[MyText]}")
-            if MyText=="stop":
-                SpeakText("engine stopped")
-                break
-
-
             
     except sr.RequestError as e:
         print("Could not request results; {0}".format(e))
